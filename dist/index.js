@@ -38280,7 +38280,7 @@ const fetchQuote = async () => {
 
 const fetchJoke = async () => {
     try {
-        const response = await axios.get('https://v2.jokeapi.dev/joke/Any');
+        const response = await axios.get('https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist');
         return response.data.joke || `${response.data.setup} - ${response.data.delivery}`;
     } catch (error) {
         core.warning('Could not fetch joke');
