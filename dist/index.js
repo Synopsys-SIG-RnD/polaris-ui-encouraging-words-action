@@ -38307,9 +38307,9 @@ const generatePhrase = async () => {
 
 try {
     generatePhrase().then(({ phrase, quote, joke }) => {
-        core.setOutput("phrase", phrase);
-        core.setOutput("quote", quote);
-        core.setOutput("joke", joke);
+        core.setOutput("phrase", `${phrase}`);
+        core.setOutput("quote", `${quote}`);
+        core.setOutput("joke", `${joke}`);
         // const payload = JSON.stringify(github.context.payload, undefined, 2);
         // console.log(`The event payload: ${payload}`);
     });
