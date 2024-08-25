@@ -1,8 +1,12 @@
 name: 'Encouraging Words Action'
 description: 'An action that greets you with encouraging words'
 outputs:
-  phrase: # id of output
-    description: 'The words of encouragement'
+  phrase:
+    description: 'Words of encouragement'
+  quote:
+    description: 'Random words of wisdom'
+  joke:
+    description: 'Random joke'
 runs:
   using: 'node20'
   main: 'index.js'

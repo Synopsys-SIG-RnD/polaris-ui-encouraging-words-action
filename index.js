@@ -103,22 +103,21 @@ const generatePhrase = async () => {
     const encouragement = getRandomElement(encouragements);
     const future = getRandomElement(futures);
 
+    let phrase = `${intro} ${subject} ${adjective} ${noun} ${impact}. ${encouragement} ${future}`;
+
     const quote = await fetchQuote();
     const joke = await fetchJoke();
 
-    let phrase = `${intro} ${subject} ${adjective} ${noun} ${impact}. ${encouragement} ${future}`;
-
-    if (quote) phrase += `\n\nQuote of the day: "${quote}"`;
-    if (joke) phrase += `\n\nHere's a joke: "${joke}"`;
-
-    return phrase;
+    return { phrase, quote, joke };
 };
 
 try {
-    generatePhrase().then(phrase => {
+    generatePhrase().then(({ phrase, quote, joke }) => {
         core.setOutput("phrase", phrase);
-        const payload = JSON.stringify(github.context.payload, undefined, 2);
-        console.log(`The event payload: ${payload}`);
+        core.setOutput("quote", quote);
+        core.setOutput("joke", joke);
+        // const payload = JSON.stringify(github.context.payload, undefined, 2);
+        // console.log(`The event payload: ${payload}`);
     });
 } catch (error) {
     core.setFailed(error.message);
