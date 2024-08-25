@@ -38288,16 +38288,6 @@ const fetchJoke = async () => {
     }
 };
 
-const fetchFunFact = async () => {
-    try {
-        const response = await axios.get('https://api.aakhilv.me/fun/facts');
-        return response.data[0];
-    } catch (error) {
-        core.warning('Could not fetch fun fact');
-        return null;
-    }
-};
-
 const generatePhrase = async () => {
     const intro = getRandomElement(intros);
     const subject = getRandomElement(subjects);
@@ -38309,13 +38299,11 @@ const generatePhrase = async () => {
 
     const quote = await fetchQuote();
     const joke = await fetchJoke();
-    const funFact = await fetchFunFact();
 
     let phrase = `${intro} ${subject} ${adjective} ${noun} ${impact}. ${encouragement} ${future}`;
 
     if (quote) phrase += `\n\nQuote of the day: "${quote}"`;
     if (joke) phrase += `\n\nHere's a joke: "${joke}"`;
-    if (funFact) phrase += `\n\nDid you know? "${funFact}"`;
 
     return phrase;
 };
