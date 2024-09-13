@@ -38268,15 +38268,15 @@ const futures = [
 
 const getRandomElement = (array) => array[Math.floor(Math.random() * array.length)];
 
-const fetchQuote = async () => {
-    try {
-        const response = await axios.get('https://api.quotable.io/random');
-        return response.data.content;
-    } catch (error) {
-        core.warning('Could not fetch quote');
-        return null;
-    }
-};
+// const fetchQuote = async () => {
+//     try {
+//         const response = await axios.get('https://api.quotable.io/random');
+//         return response.data.content;
+//     } catch (error) {
+//         core.warning('Could not fetch quote');
+//         return null;
+//     }
+// };
 
 const fetchJoke = async () => {
     try {
@@ -38299,8 +38299,9 @@ const generatePhrase = async () => {
 
     let phrase = `${intro} ${subject} ${adjective} ${noun} ${impact}. ${encouragement} ${future}`;
 
-    const quote = await fetchQuote();
+    // const quote = await fetchQuote();
     const joke = await fetchJoke();
+    const quote = `There is no wisdom, only jokes: ${joke}`;
 
     return { phrase, quote, joke };
 };
