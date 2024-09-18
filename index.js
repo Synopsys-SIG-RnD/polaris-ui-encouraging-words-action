@@ -107,7 +107,7 @@ const generatePhrase = async () => {
 
     // const quote = await fetchQuote();
     const joke = await fetchJoke();
-    const quote = `There is no wisdom, only jokes: ${joke}`;
+    const quote = `${joke}`;
 
     return { phrase, quote, joke };
 };
